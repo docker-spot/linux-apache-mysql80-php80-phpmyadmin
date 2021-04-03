@@ -1,4 +1,4 @@
-# Docker Spot - Linux, Apache, MySQL 5.7, PHP 7.4 & PHPMyAdmin
+# Docker Spot - Linux, Apache, MySQL 8.0, PHP 8.0 & PHPMyAdmin
 
 Set of all development-related tools needed for PHP development i.e,
 
@@ -6,9 +6,9 @@ Set of all development-related tools needed for PHP development i.e,
 
 - Apache
 
-- MySQL 5.7
+- MySQL 8.0
 
-- PHP 7.4
+- PHP 8.0
 
 - PHPMyAdmin
 
@@ -32,7 +32,7 @@ After installation below are the ports for the usage of the container,
 
 We have bound all default ports for ease. Please take a note if apache is running on the host machine then either you should stop apache in the host machine or change the port in `docker-compose. yml`file.
 
-### MySQL 5.7
+### MySQL 8.0
 
 MySql is also bound on the same port. Please take a note if MySQL is running on the host machine then either you should stop MySQL in the host machine or change the port in the `docker-compose.yml` file.
 
