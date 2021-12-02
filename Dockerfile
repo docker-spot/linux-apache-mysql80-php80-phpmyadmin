@@ -3,8 +3,18 @@ FROM node:latest AS node
 FROM php:8.0.3-apache
 
 # installing php necessary dependencies
-RUN apt-get update && apt-get install -y git libicu-dev libpng-dev libzip-dev unzip zlib1g-dev
-RUN docker-php-ext-configure intl && docker-php-ext-install bcmath gd intl mysqli pdo pdo_mysql zip
+RUN apt-get update && apt-get install -y \
+    git \
+    libfreetype6-dev \
+    libicu-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libzip-dev \
+    unzip \
+    zlib1g-dev
+RUN docker-php-ext-configure intl \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install bcmath gd intl mysqli pdo pdo_mysql zip
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # setting node js
@@ -37,3 +47,7 @@ RUN chown -R $user:www-data $container_project_path
 
 # changing user
 USER $user
+
+# setting git user
+RUN git config --global user.email "john@example.com"
+RUN git config --global user.name "John Doe"
